@@ -20,3 +20,16 @@
 |admin|default/founder/run|127.0.0.1|1589533098|/admin.php?c=founder||
 |admin|default/auth/run|127.0.0.1|1589533102|/admin.php?c=auth||
 |admin|default/safe/run|127.0.0.1|1589533105|/admin.php?c=safe||
+|admin|config/regist/run|127.0.0.1|1589533312|/admin.php?m=config&c=regist||
+|admin|verify/verify/run|127.0.0.1|1589533724|/admin.php?m=verify&c=verify||
+|admin|nav/nav/run|127.0.0.1|1589533733|/admin.php?m=nav&c=nav||
+|admin|config/regist/run|127.0.0.1|1589533736|/admin.php?m=config&c=regist||
+|admin|config/regist/dorun|127.0.0.1|1589533773|/admin.php?m=config&c=regist&a=dorun|type=2, inviteExpired=30, inviteCreditType=1, invitePayState=0, invitePayMoney=, inviteRewardCreditNum=10, inviteRewardCredit=2, protocol=当您申请用户时，表示您已经同意遵守本规章。 欢迎您加入本站点参加交流和讨论，本站点为公共论坛，为维护网上公共秩序和社会稳定，请您自觉遵守以下条款： <br>\n一、不得利用本站危害国家安全、泄露国家秘密，不得侵犯国家社会集体的和公民的合法权益，不得利用本站制作、复制和传播下列信息： <br>\n（一）煽动抗拒、破坏宪法和法律、行政法规实施的；\n（二）煽动颠覆国家政权，推翻社会主义制度的；<br>\n（三）煽动分裂国家、破坏国家统一的；<br>\n（四）煽动民族仇恨、民族歧视，破坏民族团结的；<br>\n（五）捏造或者歪曲事实，散布谣言，扰乱社会秩序的；<br>\n（六）宣扬封建迷信、淫秽、色情、赌博、暴力、凶杀、恐怖、教唆犯罪的；<br>\n（七）公然侮辱他人或者捏造事实诽谤他人的，或者进行其他恶意攻击的；<br>\n（八）损害国家机关信誉的；<br>\n（九）其他违反宪法和法律行政法规的；<br>\n（十）进行商业广告行为的。<br>\n二、互相尊重，对自己的言论和行为负责。<br>\n三、禁止在申请用户时使用相关本站的词汇，或是带有侮辱、毁谤、造谣类的或是有其含义的各种语言进行注册用户，否则我们会将其删除。<br>\n四、禁止以任何方式对本站进行各种破坏行为。<br>\n五、如果您有违反国家相关法律法规的行为，本站概不负责，您的登录论坛信息均被记录无疑，必要时，我们会向相关的国家管理部门提供此类信息。 , securityIp=0, activeCheck=0, activeMail=0, activeTitle=来自{sitename}的注册激活邮件, activeContent=尊敬的{username}，\n<br/>欢迎你注册成为{sitename}的会员！\n<br/>请点击下面的链接进行帐号的激活：\n<br/>{url}\n<br/>如果不能点击链接，请复制到浏览器地址输入框访问。\n<br/>\n<br/>{sitename}\n<br/>{time}, welcomeType=array(0=1)welcomeTitle=欢迎你注册成为{sitename}的会员, welcomeContent=尊敬的{username}，\n<br/>欢迎你注册成为{sitename}的会员！\n<br/>\n<br/>本站全体管理人员向您问好！\n<br/>{sitename}, securityBanUsername=创始人,管理员,版主,斑竹,admin, securityUsernameMin=3, securityUsernameMax=15, securityPasswordMin=6, securityPasswordMax=15, closeMsg=<h1>暂时关闭注册</h1>, csrf_token=3d76f92a67cf79d8|
+|admin|config/regist/run|127.0.0.1|1589533779|/admin.php?m=config&c=regist||
+|admin|config/regist/login|127.0.0.1|1589533800|/admin.php?m=config&c=regist&a=login||
+|admin|u/groups/run|127.0.0.1|1589535424|/admin.php?m=u&c=groups||
+|admin|u/groups/run|127.0.0.1|1589535433|/admin.php?type=default&m=u&c=groups||
+|admin|u/groups/run|127.0.0.1|1589535438|/admin.php?type=member&m=u&c=groups||
+|admin|u/groups/edit|127.0.0.1|1589535442|/admin.php?gid=8&m=u&c=groups&a=edit||
+|admin|u/manage/run|127.0.0.1|1589535493|/admin.php?m=u&c=manage||
+|admin|u/manage/edit|127.0.0.1|1589535498|/admin.php?uid=2&m=u&c=manage&a=edit||
