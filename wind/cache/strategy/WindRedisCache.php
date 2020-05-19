@@ -84,6 +84,7 @@ class WindRedisCache extends AbstractWindCache {
 	 */
 	public function __construct() {
 		$this->redis = new Redis();
+		
 	}
 	
 	/*
@@ -140,21 +141,47 @@ class WindRedisCache extends AbstractWindCache {
 	 */
 	public function setConfig($config) {
 		parent::setConfig($config);
-		$auth = $this->getConfig('auth', '', '');
+		$config = $this->getConfig('servers', '', array());
+		$config = $config['0'];
+		$auth = $config['auth'];
+		$db = $config['db'];
+		
+		$server = $config;
+		$defaultServer = array('host' => '', 'port' => 6379, 'timeout' => 0, 'pconn' => false, 'persistent_id' => '');
+		
+		if (!is_array($server)) throw new WindCacheException('[cache.strategy.WindRedisCache.setConfig] The redis config is incorrect');
+		$args = array_merge($defaultServer, $server);
+		if (!isset($server['host'])) throw new WindCacheException('[cache.strategy.WindRedisCache.setConfig] The redis server ip address is not exist');
+		$method = $args['pconn'] === true ? 'pconnect' : 'connect';
+		$m_args = array($args['host'], $args['port'], $args['timeout']);
+		// 如果是长链接，则会存在一个长链接的ID号
+		($args['pconn'] === true && $args['persistent_id']) && $m_args[] = $args['persistent_id'];
+		call_user_func_array(array($this->redis, $method), $m_args);
 		if ($auth && (true !== $this->redis->auth($auth))) {
 			throw new WindCacheException('[cache.strategy.WindRedisCache.setConfig] Authenticate the redis connection error');
 		}
-		$servers = $this->getConfig('servers', '', array());
+		$this->redis->select($db);
+	}
+	public function sConfig($config) {
+		//$config = $this->getConfig('servers', '', array());
+		//$config = $config['0'];
+		$auth = $config['auth'];
+		$db = $config['db'];
+		
+		$server = $config;
 		$defaultServer = array('host' => '', 'port' => 6379, 'timeout' => 0, 'pconn' => false, 'persistent_id' => '');
-		foreach ((array) $servers as $server) {
-			if (!is_array($server)) throw new WindCacheException('[cache.strategy.WindRedisCache.setConfig] The redis config is incorrect');
-			$args = array_merge($defaultServer, $server);
-			if (!isset($server['host'])) throw new WindCacheException('[cache.strategy.WindRedisCache.setConfig] The redis server ip address is not exist');
-			$method = $args['pconn'] === true ? 'pconnect' : 'connect';
-			$m_args = array($args['host'], $args['port'], $args['timeout']);
-			// 如果是长链接，则会存在一个长链接的ID号
-			($args['pconn'] === true && $args['persistent_id']) && $m_args[] = $args['persistent_id'];
-			call_user_func_array(array($this->redis, $method), $m_args);
+		
+		if (!is_array($server)) throw new WindCacheException('[cache.strategy.WindRedisCache.setConfig] The redis config is incorrect');
+		$args = array_merge($defaultServer, $server);
+		if (!isset($server['host'])) throw new WindCacheException('[cache.strategy.WindRedisCache.setConfig] The redis server ip address is not exist');
+		$method = $args['pconn'] === true ? 'pconnect' : 'connect';
+		$m_args = array($args['host'], $args['port'], $args['timeout']);
+		// 如果是长链接，则会存在一个长链接的ID号
+		($args['pconn'] === true && $args['persistent_id']) && $m_args[] = $args['persistent_id'];
+		call_user_func_array(array($this->redis, $method), $m_args);
+		if ($auth && (true !== $this->redis->auth($auth))) {
+			throw new WindCacheException('[cache.strategy.WindRedisCache.setConfig] Authenticate the redis connection error');
 		}
+		$this->redis->select($db);
 	}
 }

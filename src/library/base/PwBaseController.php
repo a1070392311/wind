@@ -22,12 +22,24 @@ class PwBaseController extends WindController {
 	protected $_a;
 	protected $_mc;
 	protected $_mca;
-	
+	protected $cache_redis;
 	/*
 	 * (non-PHPdoc) @see WindSimpleController::beforeAction()
 	 */
 	public function beforeAction($handlerAdapter) {
-
+		Wind::import("WIND:cache.strategy.WindRedisCache");
+		$redis_config = array(
+			'host' => '192.168.159.128',
+			'port' => 6379,
+			'pconn' => false,
+			'timeout' => 5,
+			'auth' => '123456',
+			'db' => '2'
+		);
+		$cache_redis = new WindRedisCache();
+		$cache_redis->sConfig($redis_config);
+		$cache_redis->set('name', 'test' , 0);
+		$this->cache_redis = $cache_redis;
 		$this->_m = $handlerAdapter->getModule();
 		$this->_c = $handlerAdapter->getController();
 		$this->_a = $handlerAdapter->getAction();

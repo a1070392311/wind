@@ -13,7 +13,6 @@ Wind::import('SRV:forum.srv.PwThreadList');
 class IndexController extends PwBaseController {
 
 	public function run() {
-
 		$order = $this->getInput('order', 'get');
 		$page = intval($this->getInput('page', 'get'));
 		

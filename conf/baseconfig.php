@@ -31,18 +31,21 @@ return array(
 'mem.key.prefix' => 'pw',
 
 
-'redis.isopen' => 0,			//开启redis缓存，请确保服务器上已安装 redis 服务，并已作好相应配置
+'redis.isopen' => 1,			//开启redis缓存，请确保服务器上已安装 redis 服务，并已作好相应配置
 'redis.servers' => array(
 	'default' => array(
 		array(
-			'host' => '10.12.83.10',
+			'host' => '192.168.159.128',
 			'port' => 6379,
 			'pconn' => false,
-			'timeout' => 0,
+			'timeout' => 5,
+			'auth' => '123456',
+			'db' => '2',
 		),
 	),
 ),
-'redis.key.prefix' => 'pw',
+'redis.key.prefix' => '',
+
 
 'apc.isopen' => 0,				//开启apc缓存，请确保服务器上已安装 apc 服务
 'db.table.name' => 'cache',		//开启db缓存，指定表明

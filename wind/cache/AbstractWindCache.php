@@ -161,7 +161,7 @@ abstract class AbstractWindCache extends WindModule {
 			$data = $this->buildData($value, $expires, $dependency);
 			return $this->addValue($key, $data, $expires);
 		} catch (Exception $e) {
-			throw new WindCacheException('[cache.AbstractWindCache.set] Setting cache failed.' . $e->getMessage());
+			throw new WindCacheException('[cache.AbstractWindCache.add] Setting cache failed.' . $e->getMessage());
 		}
 	}
 
